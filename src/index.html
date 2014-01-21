@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Zergling Meme">
+	<meta name="keywords" content="Zergling,Meme,Lolcat,Generator,Lama">
+	<meta name="author" content="Franck Ernewein">
+	<title>Zergling Meme</title>
+	<% if( build ){ %>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<% }else{ %>
+		<script>var less = {env: 'development'};</script>
+		<link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+		<script type="text/javascript" src="js/vendor/less/dist/less-1.5.0.js"></script>
+	<% } %>
+	<script data-main="js/main" src="js/vendor/requirejs/require.js"></script>
+</head>
+<body>
+	<div id="main">
+		<nav>
+			<a href="#edit">Edit</a>
+		</nav>
+		<canvas></canvas>
+	</div>
+</body>
+</html>

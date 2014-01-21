@@ -1,0 +1,148 @@
+@mobile: ~"only screen and (max-width: 768px)";
+@landscape: ~"only screen and (orientation:landscape)";
+@portrait: ~"only screen and (orientation:portrait)";
+@wide: ~"only screen and (min-width: 769px)";
+
+.fullsize(){
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.pagesize(){
+	position: absolute;
+	left: @bordersize;
+	right: @bordersize;
+	top: 0;
+	height: 100%;
+}
+
+.notransition(){
+	.transition( all 0s ) !important;
+}
+
+.transition(...) {
+	-webkit-transition: @arguments;
+	-moz-transition: @arguments;
+	-o-transition: @arguments;
+	-ms-transition: @arguments;
+	transition: @arguments;
+}
+
+.animation-delay( @time ){
+	-webkit-animation-delay: @time;
+	-moz-animation-delay: @time;
+	-ms-animation-delay: @time;
+	-o-animation-delay: @time;
+	animation-delay: @time;
+}
+
+.animation(...){
+	-webkit-animation: @arguments;
+	-moz-animation: @arguments;
+	-ms-animation: @arguments;
+	-o-animation: @arguments;
+	animation: @arguments;
+}
+
+.backface-visibility( @val: hidden ){
+	-webkit-backface-visibility: @val;
+	-moz-backface-visibility: @val;
+	-o-backface-visibility: @val;
+	-ms-backface-visibility: @val;
+	backface-visibility: @val;
+}
+
+.transition-delay( @time ){
+	-webkit-transition-delay: @time;
+	-moz-transition-delay: @time;
+	-ms-transition-delay: @time;
+	-o-transition-delay: @time;
+	transition-delay: @time;
+}
+
+.perspective( @dist ){
+	-webkit-perspective: @dist;
+	-o-perspective: @dist;
+	-moz-perspective: @dist;
+	-ms-perspective: @dist;
+	perspective: @dist;
+}
+.perspective-origin( @pos ){
+	-webkit-perspective-origin: @pos;
+	-moz-perspective-origin: @pos;
+	-o-perspective-origin: @pos;
+	-ms-perspective-origin: @pos;
+	perspective-origin: @pos;
+}
+
+.preserve3d(){
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+
+.transform(...){
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-o-transform: @arguments;
+	-ms-transform: @arguments;
+	transform: @arguments;
+}
+
+
+.opacity( @opacity ) when (@opacity = 0){
+	@opacityPercentage: @opacity * 100;
+	opacity: @opacity;
+	.ie8 &{
+		visibility: hidden;
+	}
+}
+.opacity( @opacity ) when (@opacity = 1){
+	@opacityPercentage: @opacity * 100;
+	opacity: @opacity;
+	.ie8 &{
+		visibility: visible;
+	}
+}
+.opacity( @opacity ) when (@opacity > 0) and (@opacity < 1){
+	@opacityPercentage: @opacity * 100;
+	opacity: @opacity;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opacityPercentage})"; 
+	filter: ~"alpha(opacity = @{opacityPercentage})";
+}
+
+.rgba-bg(@colour, @alpha){
+	@alphaColour: hsla(hue(@colour), saturation(@colour), lightness(@colour), @alpha);
+	@ieAlphaColour: argb(@alphaColour);
+	background-color: @colour; // Fallback for older browsers
+	background-color: @alphaColour; 
+	// IE hacks
+	zoom: 1; // hasLayout
+	background-color: transparent\9;
+	-ms-filter:  "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaColour}, endColorstr=@{ieAlphaColour})"; // IE 8+
+	//filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieAlphaColour}, endColorstr=@{ieAlphaColour})"; // IE 6 & 7
+
+}
+
+.perspective( @pers: 1500px, @ox: 50%, @oy: 50% ){
+	-webkit-perspective: @pers;
+	-webkit-perspective-origin: @ox @oy;
+
+	-moz-perspective: @pers;
+	-moz-perspective-origin: @ox @oy;
+
+	-o-perspective: @pers;
+	-o-perspective-origin: @ox @oy;
+
+	-ms-perspective: @pers;
+	-ms-perspective-origin: @ox @oy;
+
+	perspective: @pers;
+	perspective-origin: @ox @oy;
+}

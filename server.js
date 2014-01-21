@@ -18,5 +18,8 @@ app.get( '/*.html' , function( req, res ){
 	res.send( compile( './src/' + req.route.params[0] + '.html', {build: false} ) );
 });
 
+app.get( '/' , function( req, res ){
+	res.send( compile( './src/index.html', {build: false} ) );
+});
 
 app.listen( 8000 );
