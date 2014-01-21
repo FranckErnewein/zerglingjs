@@ -11,5 +11,12 @@ pids
 logs
 results
 
-npm-debug.log
 node_modules
+npm-debug.log
+
+src/js/vendor
+build/
+
+.DS_Store
+*.swp
+*.swo
