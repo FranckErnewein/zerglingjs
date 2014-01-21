@@ -1,0 +1,13 @@
+{
+	"name": "Wizzmedia",
+	"version": "1.0.0",
+	"dependencies": {
+		"requirejs": "latest",
+		"requirejs-plugins": "latest",
+		"jquery": "latest",
+		"backbone": "latest",
+		"underscore": "latest",
+		"lodash": "latest",
+		"less": "latest"
+	}
+}
